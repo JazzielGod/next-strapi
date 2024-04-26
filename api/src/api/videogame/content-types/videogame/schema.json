@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "videogames",
+  "info": {
+    "singularName": "videogame",
+    "pluralName": "videogames",
+    "displayName": "Videogame",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": false,
+      "maxLength": 150,
+      "minLength": 1
+    },
+    "launch": {
+      "type": "date"
+    },
+    "description": {
+      "type": "blocks",
+      "required": true
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "platforms": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::plattform.plattform",
+      "inversedBy": "videogames"
+    }
+  }
+}
